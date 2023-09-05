@@ -57,6 +57,9 @@ The course will pull lessons and projects from the following books:
 - The online book **Intro to Python Textbook** available at [https://codehs.com/textbook/intropython_textbook/](https://codehs.com/textbook/intropython_textbook/)
 - **Python Crash Course** by Eric Matthes.  ISBN 978-1-7185-0720-3
 
+> [!IMPORTANT]
+> Daily lessons and assignments will be posted to <https://github.com/sc-emaher/intro_to_python>
+
 There are several online resources for learning Python.  Here are some popular examples:
 
 - Python Cheat Sheet: [https://zerotomastery.io/cheatsheets/python-cheat-sheet/](https://zerotomastery.io/cheatsheets/python-cheat-sheet/)

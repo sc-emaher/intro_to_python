@@ -7,5 +7,5 @@
 
 ## Lessons
 
-1. [Getting Started](./Lessons/0-Getting_Started/)
-1. [Installing Tools](./Lessons/1-Installation/)
+1. [Getting Started](./lessons/0-getting-started/)
+1. [Installing Tools](./lessons/1-installation/)
