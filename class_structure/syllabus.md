@@ -7,7 +7,9 @@ At Summit, we’ve been cautious and intentional about introducing technology in
 However, technology is integral part of modern life and and some have been blessed with the curiosity and desire to use technology.  As with many of gifts, technology can be used as a weapon or tool.  In this class, students will learn the basic concepts and terms used when programming so we they use those skills to serve others and solve time-consuming problems quickly.
 
     1 Peter 4:10
-    Each of you should use whatever gift you have received to serve others, as faithful stewards of God’s grace in its various forms.
+    
+    Each of you should use whatever gift you have received to serve others, 
+    as faithful stewards of God’s grace in its various forms.
 
 Lessons will be taught in an interactive and relational form.  In the "real world" programs aren't created in silos-- they often require several people working together.
 
