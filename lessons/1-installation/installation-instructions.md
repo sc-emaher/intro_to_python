@@ -2,7 +2,6 @@
 
 ## Links to software
 
-1. Anaconda: <https://www.anaconda.com/>
 1. Python: <https://www.python.org/downloads/>
 1. Visual Studio Code: <https://code.visualstudio.com/>
 1. Python Extension for Visual Studio Code: <https://marketplace.visualstudio.com/items?itemName=ms-python.python>
@@ -37,5 +36,5 @@
 ## How to turn in assignments
 
 1. Create a new folder on your Google Drive called **Python-{name}**
-1. Share folder with **elizabethmaher@summitclassical.org** and **sarahetters@summitclassical.org**.  Please give **commenter** access.
+1. Share folder with teachers.  Please give **commenter** access.
 1. Class work and corresponding assignments will be turned in together.  Copy the code files into the shared folder to turn work.
