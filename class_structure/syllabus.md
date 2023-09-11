@@ -45,8 +45,13 @@ Students will need their *fully charged* laptop everyday.  If a student forgets 
 
 Laptop will need to be capable of running the following software:
 
-- **Visual Studio Code**. See [requirements for Visual Studio Code](https://code.visualstudio.com/Docs/supporting/requirements) ([https://code.visualstudio.com/Docs/supporting/requirements](https://code.visualstudio.com/Docs/supporting/requirements))
-- **Python 3.10.x** See [Python releases for Windows](https://www.python.org/downloads/windows/)([https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/a)) or [Python releases for MacOS](https://www.python.org/downloads/macos/)([https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/)).
+- **Visual Studio Code**. See [requirements for Visual Studio Code](https://code.visualstudio.com/Docs/supporting/requirements) ([https://code.visualstudio.com/Docs/supporting/requirements](https://code.visualstudio.com/Docs/supporting/requirements)).
+    - See [Download Visual Studio Code](https://code.visualstudio.com/download) (<https://code.visualstudio.com/download>) for Windows laptops and Macbooks.
+    - See [Learning with VS Code on Chromebooks](https://code.visualstudio.com/blogs/2020/12/03/chromebook-get-started) (<https://code.visualstudio.com/blogs/2020/12/03/chromebook-get-started>) for Chromebooks installation instructions.
+- **Python 3.10.x**
+    - See [Python releases for Windows](https://www.python.org/downloads/windows/)([https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/a)) for Windows laptops.
+    - See [Python releases for MacOS](https://www.python.org/downloads/macos/)([https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/)) for Macbooks.
+    - See [How do I install Python on my Chromebook?](https://www.remodelormove.com/how-do-i-install-python-on-my-chromebook/) for Chromebooks.
 
 Students will not need their full binder, but should have a pencil and a few sheets of paper available if warm-up activity requires paper.
 
@@ -54,10 +59,10 @@ Students will not need their full binder, but should have a pencil and a few she
 
 **There is no required book for this course.**  All require concepts and skills will be introduced in class. Lessons will be posted for future use along with optional resources at the end of each lesson.
 
-The course will pull lessons and projects from the following books:
+The course will pull lessons from the following books:
   
-- The online book **Intro to Python Textbook** available at [https://codehs.com/textbook/intropython_textbook/](https://codehs.com/textbook/intropython_textbook/)
-- **Python Crash Course** by Eric Matthes.  ISBN 978-1-7185-0720-3
+- The online book **Intro to Python Textbook** available at <https://codehs.com/textbook/intropython_textbook/>.
+- **Python Crash Course** by Eric Matthes.  ISBN 978-1-7185-0720-3.  Publisher site at <https://nostarch.com/python-crash-course-3rd-edition>.
 
 > [!IMPORTANT]
 > Daily lessons and assignments will be posted to <https://github.com/sc-emaher/intro_to_python>
