@@ -9,7 +9,7 @@ This portion of the class is meant to re-enforce the basic concepts of programmi
 | An program is?      | Set of instructions that tells a computer what to do. |
 | An algorithm is?    | A step-by-step procedure for solving a problem. |
 | The basic data types in Python are?[^2] | integer, float, string, bool|
-| The built-in sequence types in Python are?[^2] | list, type, range     |
+| The built-in sequence types in Python are?[^2] | list, typle, range     |
 | A function is?      | A reusable unit of code.                        |
 | A class is?         | A user-defined data type.                       |
 | An object is?       | An instance of a class.                         |
