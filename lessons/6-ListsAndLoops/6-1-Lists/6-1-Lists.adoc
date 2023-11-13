@@ -1,0 +1,620 @@
+:source-highlighter: highlight.js
+
+= Lists
+
+A list is one of four types in Python than hold a collection of data.
+The individual data items are referred to as items or elements.
+
+Lists are _ordered_ and items in the list are _mutable_ (i.e.
+changeable).
+
+Sources:
+
+* https://codehs.com/textbook/intropython_textbook/6.2[CodeHS&#44;
+Introduction to Python&#44; 6.2]
+* https://github.com/coderandhiker[Chris Roberts]
+* https://www.w3schools.com/python/python_lists.asp[W3 Schools&#44;
+Python Lists]
+* https://zerotomastery.io/cheatsheets/python-cheat-sheet/#lists[ZeroToMastery&#44;
+Python Cheat Sheet&#44; Lists]
+
+== Declaring Lists
+
+Let's get started. When declaring a list, any items in a the list are
+surrounding by brackets.
+
+[source,python]
+----
+# declare an empty list
+empty_list = []
+print(empty_list)
+print(type(empty_list))
+----
+
+....
+[]
+<class 'list'>
+....
+
+[source,python]
+----
+# declare a list of numbers
+numbers_list = [1, 3, 4, 5, 9, 125]
+print(numbers_list)
+print(type(numbers_list))
+----
+
+....
+[1, 3, 4, 5, 9, 125]
+<class 'list'>
+....
+
+[source,python]
+----
+# lists can hold different types of items
+items_list = [1, 4, 'c', "string", True]
+print(items_list)
+----
+
+....
+[1, 4, 'c', 'string', True]
+....
+
+[source,python]
+----
+# use 'len' function to get the length of any list
+print(len(empty_list))
+print(len(items_list))
+----
+
+....
+0
+5
+....
+
+== Accessing items
+
+To access an item in a list use `+variable_name[index]+` syntax. Careful
+-- lists indexes start with zero.
+
+Confusing? It is. Think of the index as an offset from the beginning of
+the list.
+
+Most modern languages use a zero-based index system. There are a few
+languages, like Visual Basic, that support a 1-based index system.
+
+[source,python]
+----
+# lists can hold different types of items
+items_list = [1, 4, 'c', "a string in a list", True]
+print(items_list)
+print(type(items_list))
+print(items_list[3])
+print(type(items_list[3]))
+----
+
+....
+[1, 4, 'c', 'a string in a list', True]
+<class 'list'>
+a string in a list
+<class 'str'>
+....
+
+Let's trying getting some items with a bigger list
+
+[source,python]
+----
+us_states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+----
+
+[source,python]
+----
+#get the first item in the list
+us_states[0]
+----
+
+....
+'Alabama'
+....
+
+[source,python]
+----
+# This will result in an 'IndexError':
+#us_states[len(us_states)]
+----
+
+Oops. Off by one error.
+
+[source,python]
+----
+# get the last state
+us_states[len(us_states)-1]
+----
+
+....
+'Wyoming'
+....
+
+Python-ism: To get the last item in a list use `+-1+` for the index
+
+[source,python]
+----
+# now let's do it the python-way
+us_states[-1]
+----
+
+....
+'Wyoming'
+....
+
+*Splicing*
+
+You can access more than just one item at a time. Accessing multiple
+items at once is called "splicing". The full syntax is
+`+variable_name[start_index:end_index:step]+`.
+
+Notes:
+
+* `+start-index+` is inclusive. That means
+`+variable_name[start_index]+` is the first element of the splice.
+* `+end-index+` is NOT inclusive. That means the last element returned
+is the `+variable_name[end-index - 1]+` is the last element of the
+splice.
+* For `+step+`, think of step counting when you were learning
+multiplication.
+
+Defaults:
+
+* `+start_index+` will default to 0
+* `+end_index+` will default to `+start_index+`
+* `+step+` defaults to one.
+
+When you splice a list, you are creating a new list in memory. The
+original list isn't affected.
+
+[source,python]
+----
+# what are the 10th - 20th states in list?
+us_states[(10-1):(20)]
+----
+
+....
+['Georgia',
+ 'Hawaii',
+ 'Idaho',
+ 'Illinois',
+ 'Indiana',
+ 'Iowa',
+ 'Kansas',
+ 'Kentucky',
+ 'Louisiana',
+ 'Maine',
+ 'Maryland']
+....
+
+[source,python]
+----
+#let's get every 10th state
+every_ten_states = us_states[::10]
+print(every_ten_states)
+----
+
+....
+['Alabama', 'Hawaii', 'Massachusetts', 'New Mexico', 'South Dakota']
+....
+
+That didn't work as expected. This is because we started with index
+`+0+`, then got items `+11+`,`+21+`,`+31+` and `+41+`.
+
+Let's try again
+
+[source,python]
+----
+if (len(us_states)>=10):
+    print(us_states[9::10])
+----
+
+....
+['Georgia', 'Maryland', 'New Jersey', 'South Carolina', 'Wyoming']
+....
+
+Get the first five items.
+
+`+us_states[0:5]+` will work, but remember the start index default to 0.
+A more concise way to write this is `+us_states[:5]+`
+
+[source,python]
+----
+#get first 5 items
+us_states[:5]
+----
+
+....
+['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California']
+....
+
+Get the last 5 items.
+
+Note the `+:+`. Without it the statement would execute as
+`+us_states[45]+` and return a single item.
+
+[source,python]
+----
+# get last 5 items
+us_states[len(us_states)-5:]
+----
+
+....
+['Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+....
+
+One odd thing about the `+step+`. It can be negative.
+
+[source,python]
+----
+us_states[45:35:-2]
+----
+
+....
+['Virginia', 'Utah', 'Tennessee', 'South Carolina', 'Pennsylvania']
+....
+
+Use just the `+step+` to return reversed list
+
+[source,python]
+----
+us_states_reversed = us_states[::-1]
+print(us_states_reversed)
+----
+
+....
+['Wyoming', 'Wisconsin', 'West Virginia', 'Washington', 'Virginia', 'Vermont', 'Utah', 'Texas', 'Tennessee', 'South Dakota', 'South Carolina', 'Rhode Island', 'Pennsylvania', 'Oregon', 'Oklahoma', 'Ohio', 'North Dakota', 'North Carolina', 'New York', 'New Mexico', 'New Jersey', 'New Hampshire', 'Nevada', 'Nebraska', 'Montana', 'Missouri', 'Mississippi', 'Minnesota', 'Michigan', 'Massachusetts', 'Maryland', 'Maine', 'Louisiana', 'Kentucky', 'Kansas', 'Iowa', 'Indiana', 'Illinois', 'Idaho', 'Hawaii', 'Georgia', 'Florida', 'Delaware', 'Connecticut', 'Colorado', 'California', 'Arkansas', 'Arizona', 'Alaska', 'Alabama']
+....
+
+[source,python]
+----
+us_states[::-8]
+----
+
+....
+['Wyoming',
+ 'Tennessee',
+ 'North Dakota',
+ 'Montana',
+ 'Louisiana',
+ 'Georgia',
+ 'Alaska']
+....
+
+== Verifying items are in a list
+
+What if you just need to know if an item is in a list? Use the format:
+
+[source,python]
+----
+my_item in my_list
+----
+
+`+True+` is returned if `+my_item+` is in `+my_list+`. `+False+` is
+returned otherwise.
+
+[source,python]
+----
+my_number_list = [1,2,3,4,5,6,7,8,9,10]
+print(f"Is 1 in my_number_list? {1 in my_number_list}")
+print(f"Is 200 in my_number_list? {200 in my_number_list}")
+----
+
+....
+Is 1 in my_number_list? True
+Is 200 in my_number_list? False
+....
+
+== Modifying a list
+
+So far we have been using splicing to return a single element or create
+a new list. Let's cover some methods to that change (i.e. modify or
+mutate) the list itself.
+
+Let's start with methods that change the original list:
+
+* `+.append(my_value)+` will add an element to the end of a list
+* `+.clear()+` will remove ALL the elements from the list.
+* `+.insert(index,my_value)+` will
+* `+.pop(index)+` will remove element from a list. `+index+` defaults to
+`+-1+` which will remove the last element in the list. _The removed
+element is returned._
+* `+.remove(my_value)+` will remove first element with value of
+`+my_value+`. +
+* `+.reverse()+` will reverse the list.
+* `+.sort()+` will sort the list in alphanumeric order.
+
+Further reading:
+
+* https://www.geeksforgeeks.org/list-methods-in-python/[Geeks for
+Geeks&#44; List methods]
+* https://www.geeksforgeeks.org/what-is-difference-between-del-remove-and-pop-on-python-lists/[Geeks
+for Geeks&#44; Difference between del&#44; pop() and remove()]
+
+[source,python]
+----
+my_number_list = [1,2,3,4,5,6,7,8,9,10]
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+....
+
+[source,python]
+----
+# append a value
+my_number_list.append(33)
+my_number_list.append(33)
+my_number_list.append(33)
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 33, 33, 33]
+....
+
+[source,python]
+----
+#insert some values
+my_number_list.insert(5, 123)
+my_number_list.insert(8, 789)
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 123, 6, 7, 789, 8, 9, 10, 33, 33, 33]
+....
+
+[source,python]
+----
+#remove some values
+my_removed_value = my_number_list.pop()
+print(my_removed_value)
+print(my_number_list)
+----
+
+....
+33
+[1, 2, 3, 4, 5, 123, 6, 7, 789, 8, 9, 10, 33, 33]
+....
+
+[source,python]
+----
+#remove some values
+my_removed_value = my_number_list.pop(5)
+print(my_removed_value)
+print(my_number_list)
+----
+
+....
+123
+[1, 2, 3, 4, 5, 6, 7, 789, 8, 9, 10, 33, 33]
+....
+
+[source,python]
+----
+#remove some values based on value, not index
+my_number_list.remove(33)
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 789, 8, 9, 10, 33]
+....
+
+`+remove+` also works on lists with string
+
+[source,python]
+----
+#.split() on a string will create a list of words.
+#.split(sep=',') on a string will create a list of items from comma-separated list
+
+my_string_list = "A string with many many words".split()
+print(my_string_list)
+my_string_list.remove("many")
+print(my_string_list)
+----
+
+....
+['A', 'string', 'with', 'many', 'many', 'words']
+['A', 'string', 'with', 'many', 'words']
+....
+
+[source,python]
+----
+#sort a list
+print(my_number_list)
+my_number_list.sort()
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 789, 8, 9, 10, 33]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 33, 789]
+....
+
+[source,python]
+----
+#reverse a list
+print(my_number_list)
+my_number_list.reverse()
+print(my_number_list)
+my_number_list.sort(reverse=True)
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 33, 789]
+[789, 33, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+[789, 33, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+....
+
+You can also remove all the elements of a list by using `+.clear()+`
+
+[source,python]
+----
+my_number_list = [1,2,3,4,5,6,7,8,9,10]
+print(my_number_list)
+my_number_list.clear()
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[]
+....
+
+There is also the `+del+` keyword.
+
+[source,python]
+----
+my_number_list = [1,2,3,4,5,6,7,8,9,10]
+print(my_number_list)
+del my_number_list[2]
+print(my_number_list)
+----
+
+....
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 4, 5, 6, 7, 8, 9, 10]
+....
+
+WARNING: This removes the list variable if no index is specified.
+
+[source,python]
+----
+del my_number_list
+print(my_number_list)
+----
+
+....
+---------------------------------------------------------------------------
+NameError: name 'my_number_list' is not defined
+....
+
+== Returning a new list
+
+We've already covered splicing to take part of a list and create a new
+one. There are a few other functions that will create new lists, rather
+than modifying/mutating the list itself.
+
+=== Sorted list
+
+`+sorted(my_list)+`
+
+Did you notice the name was similar to the methods above that modified
+this list?
+
+`+my_list.sort()+` will sort `+my_list+`, but `+sorted(my_list)+` will
+create a new list that is sorted and `+my_list+` will not be changed.
+
+=== Reversed list
+
+`+list(reversed(my_list))+`
+
+Reversed returns a iterator, so we need to create new list ourselves.
+
+[source,python]
+----
+my_list = [2,5,3,8]
+#create sorted list
+my_sorted_list = sorted(my_list)
+
+print(my_list)
+print(my_sorted_list)
+----
+
+[source,python]
+----
+my_list = [2,5,3,8]
+#create reversed list
+my_reversed_list = list(reversed(my_list))
+
+print(my_list)
+print(my_reversed_list)
+----
+
+== Global functions
+
+One more thing before our lessons ends, here are some global functions
+that are useful when working with lists.
+
+[width="100%",cols="50%,50%",options="header",]
+|===
+|Function |Description
+|`+min(my_list)+` |Returns the minimum number in a list. _All_ elements
+in the list must be a number
+
+|`+max(my_list)+` |Returns the maximum number in a list. _All_ elements
+in the list must be a number
+
+|`+sum(my_list)+` |Returns the sum of items in a list. _All_ elements in
+the list must be a number
+
+|`+len(my_list)+` |Returns the number of items in a list.
+|===
+
+[source,python]
+----
+my_number_list = [1,2,3,4,5,6,7,8,9,10,23.5]
+print(f"Minimum: {min(my_number_list)}")
+print(f"Maximum: {max(my_number_list)}")
+print(f"Sum of items: {sum(my_number_list)}")
+print(f"Length: {len(my_number_list)}")
+----
+
+== Assignments
+
+[[assignments-611---student-rosters]]
+== Assignments 6.1.1 - Student Rosters
+
+Python School has a new system for tracking student rosters for classes.
+An important part of the system is the code that asks educators to enter
+all the names for their class. This part of the program has already been
+"stubbed out". Finish the program by implementing each of the menu items
+listed in link:./roster.py[roster.py].
+
+=== Requirements
+
+The following program requirements are what the school and Python Class
+Administration Systems agreed upon:
+
+. Adding students
+.. Be able to add a single student.
+.. Be able to add a multiple students using a comma-separated list.
+.. Don't add empty strings to the list.
+.. No extra spaces before or after the student names.
+. Removing students
+.. Enter student name to be removed.
+.. Extra spaces removed from entered names.
+. Removing all students
+.. Clear the list.
+.. Be able to add students after clearing the list.
+. Listing students
+.. Prints all items in the student list
+.. Prints items sorted
+
+=== Hints
+
+* Use `+my_string_variable.split(sep=',')+` to create a list of student
+names from a comma-separated string.
+* Use `+my_string_variable.strip()+` to remove trailing whitespace from
+a string.
+
+=== Grading
+
+[cols=",",options="header",]
+|===
+|Item |Points
+|Store students in a list |1
+|Requirements for adding students |4
+|Requirements for removing students |2
+|Requirements for removing all students |1
+|Requirements for listing students |2
+|===
