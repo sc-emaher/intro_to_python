@@ -1,0 +1,157 @@
+= 7.1 Tuples
+
+In mathematics, a tuple is a finite ordered list (sequence) of elements.
+An n-tuple is a sequence (or ordered list) of n elements, where n is a
+non-negative integer. There is only one 0-tuple, referred to as the
+empty tuple. An n-tuple is defined inductively using the construction of
+an ordered pair.footnote:[https://en.wikipedia.org/wiki/Tuple]
+
+To declare a tuple, enclose the items in parenthesis.
+
+[source,python]
+----
+my_tuple = ('item 1', 'item 2', 'item 3')
+----
+
+To declare and empty tuple, use parenthesis without any other information.
+
+[source,python]
+----
+my_empty_tuple = ()
+----
+
+Like lists, the data types of the items in the tuple can be different.
+It's also okay if there are duplicated items.
+
+[source,python]
+----
+my_diverse_tuple = ("string item", 1, 2.3, True, "string item")
+----
+
+[IMPORTANT]
+====
+Tuples are ordered and NOT mutable!
+After tuples are declared they can't be changed.
+====
+
+Some common case for tuples include coordinates on a map. 
+For example, Seattle, Washington is at 47°36'35"N 122°19'59"W.
+
+We could declare the coordinates in a two parts.
+
+[source,python]
+----
+seattle_coordinates = ("47°36'35""N", "122°19'59""W")
+print(f"Seattle is found at {seattle_coordinates}")
+----
+
+....
+Seattle is found at ("47°36'35N", "122°19'59W")
+....
+
+That works, but it's not easy to access the individual items of the coordinates. 
+Let's try again with nested tuples.
+
+[source,python]
+----
+seattle_coordinates = ((47, 36, 35, "N"), (122, 19, 59,"W"))
+print(f"Seattle is found at {seattle_coordinates}")
+----
+
+....
+Seattle is found at ((47, 36, 35, 'N'), (122, 19, 59, 'W'))
+....
+
+We can access the parts of the tuple using the `+[]+` syntax like we use with lists.
+
+[source,python]
+----
+latitude = seattle_coordinates[0]
+print(f"Seattle latitude is {latitude}")
+----
+
+....
+Seattle latitude is (47, 36, 35, 'N')
+....
+
+It's easier to access the information about the coordinates, but harder for the user to read when we print the information. 
+Let's fix that using the `+[][]+` syntax we learned when using matrices.
+
+[source,python]
+----
+degree_sign = u'\N{DEGREE SIGN}' #<.>
+print(f"Seattle is latitude is {seattle_coordinates[0][0]}{degree_sign} {seattle_coordinates[0][1]}' {seattle_coordinates[0][2]}\".")
+----
+<.> The is how you declare a degree sign character.
+
+....
+Seattle is latitude is 47° 36' 35".
+....
+
+Remember, don't try to change a tuple value, or you will get a Type
+error.
+
+Executing
+
+[source,python]
+----
+seattle_coordinates[0] = "changing value"
+----
+
+will cause
+
+[source,text]
+----
+TypeError: 'tuple' object does not support item assignment
+----
+
+<<<
+
+== Assignments
+
+=== 7.1.1 RGB
+
+Computer screens are made of pixels. 
+Each pixel is assigned an RGB value so it knows what color to display. 
+'RGB' stands for red-green-blue and the value from each can be from `+0+` to `+255+`. 
+Red, Green, and Blue are the primary colors for light. 
+For more information, see https://www.digitalcitizen.life/rgb-rgb-lighting/[What is RGB? How is it used? What about RGB lighting?]footnote:[https://www.digitalcitizen.life/rgb-rgb-lighting/].
+
+For example, red is represented as `+255, 0, 0+` in the three-part tuple, since red is the first component of the R-G-B tuple.
+
+Declare and print information for the following colors:
+
+. *Green*. That will be max value in the green component. Zero for
+everything else.
+. *Blue*. That will be max value in the blue component. Zero for
+everything else.
+. *Black*. That will be 0 in all components. Black is the absence of
+light.
+. *White*. That will be max value all components. White light contains
+all the colors.
+
+Output will something like the following where ___ is replaced by the
+values for the defined tuples
+
+[source,text]
+----
+The RGB value for 'Green' is ____."
+The RGB value for 'Blue' is ____."
+The RGB value for 'Black' is ____."
+The RGB value for 'White' is ____."
+----
+
+[NOTE]
+====
+To define other colors like purple, orange, yellow, etc use a website like <https://www.rapidtables.com/web/color/RGB_Color.html> 
+====
+
+==== Grading
+
+[%autowidth]
+[cols=",",options="header",]
+|===
+|Item |Points
+|Declaration for each color. |2
+|Print value for each color. |2
+|===

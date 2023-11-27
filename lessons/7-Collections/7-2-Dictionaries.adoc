@@ -1,0 +1,277 @@
+= 7.2 Dictionaries
+
+As the name implies, dictionaries are a type in Python that allows the  programmer to associate related information easily.
+Let's take a look at some real-world examples that can be modeled by dictionaries.
+
+[%autowidth%]
+[cols=",",options="header"]
+|===
+|Item |Related information
+|Social Security Number |name, birth date, reported taxes, etc.
+
+|Driver's license number |address, age, driving restrictions, organ
+donor, etc.
+
+|School id |name, grade, GPA, transcript, clubs
+
+|Word |definition, part of speech, origin, etc.
+
+|ISBN |book title, author, year published, etc.
+|===
+
+Dictionary objects hold a series of _key-value pairs_ that allow a
+programmer to associate information (the key) with it's value.
+
+The syntax for declaring a dictionary is:
+
+[source,python]
+----
+my_dictionary = {'key1'='value1', 'key2'='value2'}
+----
+
+The values can be of any type and do not have to match.
+
+== Declaring dictionaries
+
+[source,python]
+----
+my_empty_dictionary = {}
+print(my_empty_dictionary)
+----
+
+....
+{}
+....
+
+Let's create our own dictionary object to hold the information for an
+ISBN.
+
+For an ISBN the keys would be: Number, Author, Title, Publisher,
+Published Date.
+
+[source,python]
+----
+
+my_ISBN = {'Number':123467890, 'Author': 'John Doe', 'Title': 'My Printed Book', 'Publisher': 'My Publisher', 'Published Date': 2023}
+print(my_ISBN)
+----
+
+....
+{'Number': 123467890, 'Author': 'John Doe', 'Title': 'My Printed Book', 'Publisher': 'My Publisher', 'Published Date': 2023}
+....
+
+== Accessing dictionaries
+
+To access a value for dictionary variable, use the `++[]++` syntax.
+Instead of specifying the index, specify the key.
+
+[source,python]
+----
+my_ISBN['Number']
+----
+
+....
+123467890
+....
+
+If you specify a key that doesn't exist, you get an error.
+
+[source,python]
+----
+book_genre = my_ISBN['Genre']
+print(book_genre)
+----
+
+....
+KeyError: 'Genre'
+....
+
+[CAUTION]
+====
+Keys are case-sensitive.
+====
+
+If you need to check if a key exists in a dictionary object use the `+in+` keyword.
+
+[source,python]
+----
+if 'Genre' in my_ISBN:
+    print("Genre is specified.")
+else:
+    print("Genre is NOT specified.")
+----
+
+....
+Genre is NOT specified.
+....
+
+If you need to get the value of a key-value pair and you are not sure if the key exists, use the `+.get(key, default-value)+` method instead of `+[]+` to specify a default value if the key doesn't exist.
+
+[source,python]
+----
+book_genre = my_ISBN.get('Genre', "not specified")
+print(book_genre)
+----
+
+....
+not specified
+....
+
+
+Sometimes it's necessary to loop through keys, values or key-value
+pairs.
+
+[source,python]
+----
+print("Keys:")
+for key in my_ISBN.keys():
+    print(f" - {key}")
+----
+
+....
+Keys:
+ - Number
+ - Author
+ - Title
+ - Publisher
+ - Published Date
+ - Genre
+ - Edition
+....
+
+[source,python]
+----
+print("Values:")
+for value in my_ISBN.values():
+    print(f" - {value}")
+----
+
+....
+Values:
+ - 123467890
+ - John Doe
+ - My Printed Book
+ - My Publisher
+ - 2023
+ - Programming
+ - 2
+....
+
+[source,python]
+----
+print("Key-Value Pairs:")
+for items in my_ISBN.items(): # <.>
+    print(f"{items[0]}:{items[1]}")
+----
+<.> The `+.items()+` method returns a tuple.  The first part is the key.  The second part is the value.
+....
+Key-Value Pairs:
+Number:123467890
+Author:John Doe
+Title:My Printed Book
+Publisher:My Publisher
+Published Date:2023
+Genre:Programming
+Edition:2
+....
+
+Alternatively, the code could be rewritten to take advantage of
+multi-variable initializations.
+
+[source,python]
+----
+print("Key-Value Pairs:")
+for key, value in my_ISBN.items(): 
+    print(f"{key}:{value}")
+----
+
+....
+Key-Value Pairs:
+Number:123467890
+Author:John Doe
+Title:My Printed Book
+Publisher:My Publisher
+Published Date:2023
+Genre:Programming
+Edition:2
+....
+
+== Modifying dictionaries
+
+Since dictionaries are mutable, you can also change the value for a
+given key.
+
+[source,python]
+----
+my_ISBN['Genre'] = "Programming"
+print(my_ISBN)
+----
+
+....
+{'Number': 123467890, 'Author': 'John Doe', 'Title': 'My Printed Book', 'Publisher': 'My Publisher', 'Published Date': 2023, 'Genre': 'Programming'}
+....
+
+To add a value, use the same syntax as above. Unlike when you access and
+item, if you assign a value to a key that doesn't exist, it will
+automatically be added to the dictionary object.
+
+[source,python]
+----
+my_ISBN['Edition'] = 2
+print(my_ISBN)
+----
+
+....
+{'Number': 123467890, 'Author': 'John Doe', 'Title': 'My Printed Book', 'Publisher': 'My Publisher', 'Published Date': 2023, 'Genre': 'Programming', 'Edition': 2}
+....
+
+To remove a value, use the `+del+` keyword.
+
+[source,python]
+----
+del my_ISBN['Edition']
+print (my_ISBN)
+----
+
+....
+{'Number': 123467890, 'Author': 'John Doe', 'Title': 'My Printed Book', 'Publisher': 'My Publisher', 'Published Date': 2023, 'Genre': 'Programming'}
+....
+
+<<<
+
+== Assignments
+
+[[assignment-721-flashcards]]
+=== Assignment 7.2.1 Flashcards
+
+Create a program that helps a student study for an upcoming test.
+
+. Declare a dictionary variable that has three terms and three
+definitions.
+. Print all the terms available.
+. Create a while loop that allows the student to type in a term and
+prints the definition for that term.
+. If term doesn't exists, ask the user if they want to add that term to
+their flashcards. If they do, ask for a definition and update the
+dictionary variable.
+.. Don't forget to reprint the available terms when they change
+. If the student types 'q' or 'quit' at anytime, the programs stops.
+
+==== Grading
+
+[%autowidth%]
+[cols=">,",options="header",]
+|===
+|Points |Item
+|1 |Dictionary variable declared and initialized.
+
+|2 |Prints all terms at beginning of the program and when a term is
+added.
+
+|1 |Correctly prints definition for a term
+
+|2 |Allows student to add definition to term isn't already defined.
+Program doesn't crash when non-existent term entered by student.
+
+|1 |While loop execution ends when user quits.
+|===

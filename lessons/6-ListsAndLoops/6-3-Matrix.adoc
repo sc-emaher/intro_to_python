@@ -1,0 +1,151 @@
+:source-highlighter: highlight.js
+
+= Matrices
+
+Remember when first learning about lists we learned that lists can
+contain multiple types of items? Well, it can get more complicated than
+that. Lists can contain other lists. That's how we make a matrix. (This
+chessboard or battle ship.)
+
+We will cover two ways to initialize a matrix:  statically and dynamically.
+
+Source: https://www.geeksforgeeks.org/initialize-matrix-in-python/[Geeks
+for Geeks&#44; Initialize a matrix in Python]
+
+<<<
+
+== Static initialization
+
+To statically initialize a matrix, each set of inner `+[]+` represents one row.  The items within the `+[]+` are the values for each column in that row.
+
+[source,python]
+----
+# declare a 3x2 matrix
+matrix = [[1,2],[3,4],[5,6]]
+
+# print matrix
+for row in range(len(matrix)):
+    for column in range(len(matrix[row])):
+        print(matrix[row][column], end=" ")
+    print("")
+----
+
+....
+1 2 
+3 4 
+5 6 
+....
+
+You can change the value of a single cell by using `+matrix[row_index][column_index]+` syntax.  Remember, both indexes are zero-based.
+
+[source,python]
+----
+# declare a 3x2 matrix
+matrix = [[1,2],[3,4],[5,6]]
+
+# initialize matrix
+for row in range(3):
+    for column in range(2):
+        matrix[row][column] = f"r{row}c{column}"
+
+# print matrix
+for row in range(len(matrix)):
+    for column in range(len(matrix[row])):
+        print(matrix[row][column], end=" ")
+    print("")
+----
+
+....
+r0c0 r0c1 
+r1c0 r1c1 
+r2c0 r2c1 
+....
+
+<<<
+
+== Dynamic initialization
+
+Dynamic initialization uses the one-line version of a `+for+` loop.  
+
+The syntax is
+
+[source,python]
+----
+0 for i in range(my_number):
+----
+
+instead of the expanded version of
+
+[source,python]
+----
+for i in range(my_number):
+    return 0
+----
+
+Let's use dynamic initialization to set each cell in the matrix to `+0+`.  
+Notice that `+rows+` and `+cols+` determine how large our matrix will be.  
+It's trivial to change the following code to make a 10x10 matrix instead of a 3x2 matrix.
+We just have to the values of `+rows+` and `+cols+`
+
+[source,python]
+----
+rows = 3
+cols = 2
+
+# initialize matrix
+matrix = [[0 for _ in range(cols)] for _ in range(rows)]
+print(f"Initialized matrix: {matrix}")
+
+# assign values
+for row in range(len(matrix)):
+    for column in range(len(matrix[row])):
+        matrix[row][column] = row + column
+# default print for matrix
+print(f"Matrix: {matrix}")
+
+print("Matrix displayed in columns and rows:")
+# print matrix
+for row in range(len(matrix)):
+    for column in range(len(matrix[row])):
+        print(matrix[row][column], end=" ")
+    print("")
+----
+
+....
+Initialized matrix: [[0, 0], [0, 0], [0, 0]]
+Matrix: [[0, 1], [1, 2], [2, 3]]
+Matrix displayed in columns and rows:
+0 1 
+1 2 
+2 3 
+....
+
+<<< 
+
+== Assignments
+
+[[assignment-6-3-1]]
+=== Assignment 6.3.1 - Battleship board
+
+Display a mini 5x5 battleship board where:
+
+* The submarine in A1-A3 has been hit. 
+* Show a missed shot at B1.
+* `+_+` represent empty spaces.
+* `+O+` represent missed shots.
+* `+X+` represent hits.
+
+The output should look similar to the following. 
+You __do not__ have to print the column headers (A-E) or row headers (1-5). 
+They are just for your reference.
+
+[source,text]
+----
+    A    B    C    D    E
+1   X    O    _    _    _
+2   X    _    _    _    _   
+3   _    _    _    _    _
+4   _    _    _    _    _
+5   _    _    _    _    _ 
+----
+

@@ -1,0 +1,31 @@
+:fn-dictionary-disclaimer: footnote:[As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.]
+
+:fn-items-disclaimer: footnote:[Set items themselves are unchangeable. You can remove and/or add items from the set whenever you like.]
+
+= Collections in Python
+
+There are four collection data types in the Python programming language:
+
+[cols="1, 4, 1"]
+|====
+
+| *List* 
+| A collection which is _ordered_ and _changeable_. 
+|Allows duplicate members.
+
+|*Tuple* 
+| A collection which is _ordered_ and _unchangeable_. 
+|Allows duplicate members.
+
+| *Set* 
+| A collection which is _unordered_, _unchangeable_{fn-items-disclaimer}, and
+_not indexed_. 
+| No duplicate members.
+
+|*Dictionary*
+| A collection which is _ordered_{fn-dictionary-disclaimer} and _changeable_.
+| No duplicate keys.
+|====
+
+Source: https://www.w3schools.com/python/python_lists.asp[W3
+Schools&#44; Python Collections]
